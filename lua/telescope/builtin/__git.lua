@@ -256,6 +256,7 @@ git.branches = function(opts)
   )
 
   local show_remote_tracking_branches = vim.F.if_nil(opts.show_remote_tracking_branches, true)
+  local show_tags = vim.F.if_nil(opts.show_tags, false)
 
   local results = {}
   local widths = {
@@ -285,6 +286,12 @@ git.branches = function(opts)
       end
     elseif vim.startswith(entry.refname, "refs/heads/") then
       prefix = "refs/heads/"
+    elseif vim.startswith(entry.refname, "refs/tags/") then
+      if show_tags then
+        prefix = "" -- make clear its a tag by keeping the refs/tags prefix
+      else
+        return
+      end
     else
       return
     end

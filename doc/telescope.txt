@@ -1174,6 +1174,8 @@ builtin.git_branches({opts})                *telescope.builtin.git_branches()*
         {show_remote_tracking_branches} (boolean)  show remote tracking
                                                    branches like origin/main
                                                    (default: true)
+        {show_tags}                     (boolean)  show tag refs
+                                                   (default: false)
         {pattern}                       (string)   specify the pattern to
                                                    match all refs
 
